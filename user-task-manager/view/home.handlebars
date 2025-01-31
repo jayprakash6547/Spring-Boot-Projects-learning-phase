@@ -1,0 +1,27 @@
+<h1>User Task Manager</h1>
+
+<h2>Add User</h2>
+<form action="/add-user" method="POST">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="mobile" placeholder="Mobile" required>
+    <button type="submit">Add User</button>
+</form>
+
+<h2>Add Task</h2>
+<form action="/add-task" method="POST">
+    <select name="user_id" required>
+        {{#each users}}
+            <option value="{{this.id}}">{{this.name}}</option>
+        {{/each}}
+    </select>
+    <input type="text" name="task_name" placeholder="Task Name" required>
+    <select name="status">
+        <option value="Pending">Pending</option>
+        <option value="Done">Done</option>
+    </select>
+    <button type="submit">Add Task</button>
+</form>
+
+<h2>Export Data</h2>
+<a href="/export"><button>Export to Excel</button></a>
